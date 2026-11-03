@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Express + Flask Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f6f8; display: flex; justify-content: center; padding-top: 50px; }
+    .card { background: white; padding: 30px; border-radius: 10px; width: 380px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    input, textarea { width: 100%; padding: 10px; margin: 6px 0 14px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+    button { width: 100%; padding: 12px; background: #2563eb; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }
+    .error { background: #fee2e2; color: #b91c1c; padding: 10px; border-radius: 5px; margin-bottom: 15px; word-break: break-word; }
+    .note { color: #6b7280; font-size: 13px; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Submit Your Details</h2>
+
+    <% if (error) { %>
+      <div class="error"><%= error %></div>
+    <% } %>
+
+    <form method="POST" action="/submit">
+      <label>Name</label>
+      <input type="text" name="name" value="<%= form.name || '' %>">
+
+      <label>Email</label>
+      <input type="email" name="email" value="<%= form.email || '' %>">
+
+      <label>Message</label>
+      <textarea name="message" rows="3"><%= form.message || '' %></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+    <p class="note">Frontend: Node.js + Express &nbsp;|&nbsp; Backend: Flask</p>
+  </div>
+</body>
+</html>
